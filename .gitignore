@@ -17,3 +17,6 @@
 # IDE and Tools
 .idea/
 *.iml
+
+# generator outputs
+outputs/

@@ -12,6 +12,8 @@ import (
 	"io/fs"
 	"io/ioutil"
 	"log"
+	"os"
+	"path"
 	"strconv"
 	"strings"
 )
@@ -28,6 +30,8 @@ func Gen(src string, dest string) {
 		log.Fatal(err)
 	}
 	println(firstBuffer.String())
+	destDir := path.Dir(dest)
+	_ = os.MkdirAll(destDir, fs.ModePerm)
 	writeError := ioutil.WriteFile(dest, firstBuffer.Bytes(), fs.ModePerm)
 	if writeError != nil {
 		log.Fatal(writeError)
